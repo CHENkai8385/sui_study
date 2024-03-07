@@ -1,3 +1,4 @@
+#[allow(lint(self_transfer))]
 module hello_world::hello {
     use std::string;
     use sui::object::{Self, UID};
@@ -14,6 +15,6 @@ module hello_world::hello {
             id: object::new(ctx),
             text: string::utf8(b"Hello World!")
         };
-        transfer::public_transfer(object, tx_context::sender(ctx));
+        transfer::transfer(object, tx_context::sender(ctx));
     }
 }
